@@ -1,0 +1,24 @@
+﻿<Window x:Class="OnRenderDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnRenderDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid x:Name="RootPanel" Background="Black">
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="1">
+            <Button x:Name="Test" Margin="4 4 4 0" Padding="8 4" Content="放进来/移出去" Click="PutInOutButton_Click"/>
+            <Button Margin="4 4 4 0" Padding="8 4" Content="改一下颜色" Click="Rerender_Click"/>
+            
+            <Border Margin="4 4 4 4" Background="Black"
+                    Height="{Binding ActualWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}">
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <VisualBrush x:Name="PreviewBrush"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>
